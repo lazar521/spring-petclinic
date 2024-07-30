@@ -7,28 +7,24 @@ pipeline {
         string(name: "HISTORY_REPO_URL", description: "Nexus history repo URL (with protocol)")
         string(name: "MAIN_REPO_URL", description: "Nexus main repo URL (with protocol)")
     }
-    
-    tools {
-        maven 'maven-3.9.8' // Ensure this matches the name configured in Global Tool Configuration
-    }
 
 
     stages {
-        // stage("Running Checkstyle") {
-        //     steps {
-        //         withMaven(maven: 'maven-3.9.8') {
-        //             sh './mvnw checkstyle:checkstyle -Dcheckstyle.output.file=target/checkstyle-result.xml'
-        //         }
-        //     }
-        // }
+        stage("Running Checkstyle") {
+            steps {
+                withMaven(maven: 'maven-3.9.8') {
+                    sh './mvnw checkstyle:checkstyle -Dcheckstyle.output.file=target/checkstyle-result.xml'
+                }
+            }
+        }
         
-        // stage("Testing") {
-        //     steps {
-        //         withMaven(maven: 'maven-3.9.8') {
-        //             sh './mvnw clean test'
-        //         }
-        //     }
-        // }
+        stage("Testing") {
+            steps {
+                withMaven(maven: 'maven-3.9.8') {
+                    sh './mvnw clean test'
+                }
+            }
+        }
         
         stage("Build") {
             steps {
@@ -73,10 +69,9 @@ pipeline {
 
         
     }
-
-    // post {
-    //     always {
-    //         archiveArtifacts artifacts: 'target/checkstyle-result.xml'
-    //     }
-    // }
+    post {
+        always {
+            archiveArtifacts artifacts: 'target/checkstyle-result.xml'
+        }
+    }
 }
