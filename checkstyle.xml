@@ -1,0 +1,24 @@
+<!DOCTYPE module PUBLIC
+    "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+    "https://checkstyle.sourceforge.io/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+    <!-- Non-TreeWalker modules -->
+    <module name="NewlineAtEndOfFile"/>
+
+    <module name="TreeWalker">
+        <!-- TreeWalker modules -->
+        <module name="JavadocMethod">
+
+        </module>
+
+        <module name="Indentation"/>
+        <module name="MethodName"/>
+        <module name="ParameterName"/>
+        <module name="LocalVariableName"/>
+        <module name="WhitespaceAfter"/>
+        <module name="WhitespaceAround"/>
+        <module name="EmptyBlock"/>
+        <module name="AvoidStarImport"/>
+    </module>
+</module>
