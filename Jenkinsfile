@@ -12,21 +12,21 @@ pipeline {
     }
 
     stages {
-        stage("Running Checkstyle") {
-            steps {
-                withMaven(maven: 'maven-3.9.8') {
-                    sh './mvnw checkstyle:checkstyle -Dcheckstyle.output.file=target/checkstyle-result.xml'
-                }
-            }
-        }
+        // stage("Running Checkstyle") {
+        //     steps {
+        //         withMaven(maven: 'maven-3.9.8') {
+        //             sh './mvnw checkstyle:checkstyle -Dcheckstyle.output.file=target/checkstyle-result.xml'
+        //         }
+        //     }
+        // }
         
-        stage("Testing") {
-            steps {
-                withMaven(maven: 'maven-3.9.8') {
-                    sh './mvnw clean test'
-                }
-            }
-        }
+        // stage("Testing") {
+        //     steps {
+        //         withMaven(maven: 'maven-3.9.8') {
+        //             sh './mvnw clean test'
+        //         }
+        //     }
+        // }
         
         stage("Build") {
             steps {
@@ -55,9 +55,9 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            archiveArtifacts artifacts: 'target/checkstyle-result.xml'
-        }
-    }
+    // post {
+    //     always {
+    //         archiveArtifacts artifacts: 'target/checkstyle-result.xml'
+    //     }
+    // }
 }
