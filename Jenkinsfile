@@ -4,7 +4,6 @@ pipeline {
     parameters {
         string(name: "CREDENTIALS_ID", description: "Nexus credentials ID")
         string(name: "URL", description: "Nexus repo URL (with protocol)")
-        string(name: "PROTOCOL", description: "http or https")
     }
     
     tools {
