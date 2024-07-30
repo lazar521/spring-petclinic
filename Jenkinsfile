@@ -13,6 +13,22 @@ pipeline {
                 }
             }
         }
+        
+        stage("Testing"){
+            steps{
+                withMaven(maven:'maven-3.9.8') {
+                    sh './mvnw clean test'   
+                }
+            }
+        }
+        
+        stage("Build"){
+            steps{
+                withMaven(maven:'maven-3.9.8') {
+                    sh './mvnw clean package -DskipTests'   
+                }
+            }
+        }
     }
     post {
         always {
