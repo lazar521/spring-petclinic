@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        string(name:"IMAGE_NAME",description:"Name of the image to be created (lowercase)"
+        string(name:"IMAGE_NAME",description:"Name of the image to be created (lowercase)")
         string(name: "CREDENTIALS_ID", description: "Nexus credentials ID")
         string(name: "HISTORY_REPO_URL", description: "Nexus history repo URL (with protocol)")
         string(name: "MAIN_REPO_URL", description: "Nexus main repo URL (with protocol)")
