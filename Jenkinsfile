@@ -3,7 +3,7 @@ pipeline {
 
     parameters {
         string(name: "CREDENTIALS_ID", description: "Nexus credentials ID")
-        string(name: "URL", description: "Nexus repo URL")
+        string(name: "URL", description: "Nexus repo URL (with protocol)")
         string(name: "PROTOCOL", description: "http or https")
     }
     
@@ -47,7 +47,7 @@ pipeline {
         stage("Push to Nexus") {
             steps {
                 script {
-                    docker.withRegistry("${PROTOCOL}://${URL}", "${CREDENTIALS_ID}") {
+                    docker.withRegistry("${URL}", "${CREDENTIALS_ID}") {
                         docker.image('spring-petclinic:latest').push('latest')
                     }
                 }
