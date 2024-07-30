@@ -9,14 +9,14 @@ pipeline {
         stage("Running Checkstyle") {
             steps {
                 withMaven(maven: 'maven-3.9.8') {  // Correct usage with a map for configuration
-                    sh './mvnw checkstyle:checkstyle'
+                    sh './mvnw checkstyle:checkstyle -Dcheckstyle.output.file=target/checkstyle-result.xml'
                 }
             }
         }
     }
     post {
         always {
-            archiveArtifacts artifacts: './target/*'
+            archiveArtifacts artifacts: 'target/checkstyle-result.xml'
         }
     }
 }
