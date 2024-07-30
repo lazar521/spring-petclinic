@@ -16,7 +16,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: './target/checkstyle-result.xml'
+            archiveArtifacts artifacts: './target/*'
         }
     }
 }
